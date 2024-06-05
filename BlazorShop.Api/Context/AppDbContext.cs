@@ -1,25 +1,17 @@
 ﻿using BlazorShop.Api.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.IO;
 
 namespace BlazorShop.Api.Context
 
 {
     public class AppDbContext : DbContext
     {
-
-        //private readonly IConfiguration _configuration;
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-            var connectionString = Environment.GetEnvironmentVariable("MY_APP_DB_CONNECTION_STRING");
 
-            if (string.IsNullOrWhiteSpace(connectionString))
-            {
-                throw new InvalidOperationException("A variável de ambiente MY_APP_DB_CONNECTION_STRING não foi configurada.");
-            }
-
-            optionsBuilder.UseSqlServer(connectionString);
         }
 
         public DbSet<Carrinho>? Carrinho { get; set; }
