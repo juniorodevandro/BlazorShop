@@ -1,4 +1,6 @@
 using BlazorShop.Api.Context;
+using BlazorShop.Api.Interface;
+using BlazorShop.Api.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -13,6 +15,9 @@ builder.Services.AddSwaggerGen();
 
 // Configure DbContext
 ConfigureDbContext(builder.Services, builder.Configuration);
+
+
+builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 
 var app = builder.Build();
 
