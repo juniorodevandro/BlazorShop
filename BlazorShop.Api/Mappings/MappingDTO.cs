@@ -16,7 +16,7 @@ namespace BlazorShop.Api.Mappings
                     }).ToList();
         }
 
-        public static IEnumerable<ProdutoDTO> ConverterProdutosDTO(this IEnumerable<Produto> produtos)
+        public static IEnumerable<ProdutoDTO> ConverterProdutoDTO(this IEnumerable<Produto> produtos)
         {
             return (from produto in produtos
                     select new ProdutoDTO

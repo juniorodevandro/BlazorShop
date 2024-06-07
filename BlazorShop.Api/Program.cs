@@ -39,8 +39,8 @@ app.Run();
 // Method to configure DbContext
 void ConfigureDbContext(IServiceCollection services, IConfiguration configuration)
 {
-    var connectionString1 = configuration.GetConnectionString("EscalaDbConnection");
-    var connectionString2 = configuration.GetConnectionString("DefaultDbConnection");
+    var connectionString2 = configuration.GetConnectionString("EscalaDbConnection");
+    var connectionString1 = configuration.GetConnectionString("DefaultDbConnection");
 
     if (string.IsNullOrWhiteSpace(connectionString1) || string.IsNullOrWhiteSpace(connectionString2))
     {
