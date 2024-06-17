@@ -1,8 +1,10 @@
 using BlazorShop.Api.Context;
 using BlazorShop.Api.Interface;
 using BlazorShop.Api.Repository;
+using JWT.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Net.Http.Headers;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +21,8 @@ ConfigureDbContext(builder.Services, builder.Configuration);
 
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 
+builder.Services.AddCors();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -27,6 +31,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(policy =>
+    policy.WithOrigins("https://localhost:7237;http://localhost:5097")
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .WithHeaders(HeaderNames.ContentType)
+);
 
 app.UseHttpsRedirection();
 
