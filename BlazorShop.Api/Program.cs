@@ -15,13 +15,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Add Cors
+builder.Services.AddCors();
+
 // Configure DbContext
 ConfigureDbContext(builder.Services, builder.Configuration);
 
-
+// Interface
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
-
-builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -33,7 +34,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(policy =>
-    policy.WithOrigins("https://localhost:7237;http://localhost:5097")
+    policy.WithOrigins("https://localhost:7096", "http://localhost:5097")
     .AllowAnyMethod()
     .AllowAnyHeader()
     .WithHeaders(HeaderNames.ContentType)

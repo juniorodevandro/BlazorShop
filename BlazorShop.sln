@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp.Web", "BlazorApp.Web\BlazorApp.Web.csproj", "{5FD4EAD1-57A4-4997-93FB-AF37CFC322B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorShop.Web", "BlazorApp.Web\BlazorShop.Web.csproj", "{5FD4EAD1-57A4-4997-93FB-AF37CFC322B0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorShop.Api", "BlazorShop.Api\BlazorShop.Api.csproj", "{2AD4BCA3-3160-4466-9165-1B438E32B1B7}"
 EndProject

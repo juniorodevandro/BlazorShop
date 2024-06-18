@@ -2,7 +2,7 @@
 using System.Net.Http.Json;
 using System.Net;
 
-namespace BlazorApp.Web.Services
+namespace BlazorShop.Web.Services
 {
     public class ProdutoService : IProdutoService
     {
@@ -19,8 +19,17 @@ namespace BlazorApp.Web.Services
         public async Task<IEnumerable<ProdutoDTO>> GetProduto(int? id)
         {
             try
-            {                
-                var response = await _httpClient.GetAsync($"api/Produto/{id}");               
+            {
+                HttpResponseMessage response;
+
+                if (id > 0)
+                {
+                    response = await _httpClient.GetAsync($"api/Produto/{id}");
+                }
+                else
+                {
+                    response = await _httpClient.GetAsync($"api/Produto");               
+                }
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -33,7 +42,7 @@ namespace BlazorApp.Web.Services
                 else
                 {
                     var message = await response.Content.ReadAsStringAsync();
-                    _logger.LogError($"Erro a obter produto pelo id= {id} - {message}");
+                    _logger.LogError($"Erro a obter produto pelo id = {id} - {message}");
                     throw new Exception($"Status Code : {response.StatusCode} - {message}");
                 }
             }
